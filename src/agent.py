@@ -75,7 +75,7 @@ class Assistant(Agent):
 
     @function_tool
     async def add_item_to_bill(self, context: RunContext, item: str, quantity: float):
-        """Add an item and its quantity to the customers bill"""
+        """Add an item and its quantity to the customers bill. Only call this when the customer clearly names a specific item. Never call it with an empty, unclear, or "unknown" item; ask the customer instead."""
         if not item or item.strip().lower() == "unknown":
             return "Ask the customer which item they want before adding it."
         if quantity <= 0:
